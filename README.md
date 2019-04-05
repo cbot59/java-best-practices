@@ -1,9 +1,7 @@
-# Materi Training #
-
 Sesi 1
 Java Coding Practices
 - Naming Convention
-- Equals and HashCode Method 
+- Equals and HashCode Method
 - toString Method
 - Serializable
 
@@ -12,11 +10,20 @@ Object Oriented Design
 - Composition vs Inheritance
 - Abstract Class vs Interface
 - Runtime vs Checked Exceptions
+
+Java Concurrency
 - Multithreading
 - Nonblocking
 - Reactive
 
 Sesi 3
+Functional Programming
+- Intro Lambda
+- Passing function as parameter
+- Closure
+- Immutability
+- Bifunction
+
 Architecture & Design Principle 
 - Modularity
 - Orthogonality
@@ -36,7 +43,9 @@ Design Pattern Intro
 - Creational Pattern
 - Structural Pattern
 - Behavioral Pattern
-- Concurrency Pattern Creational Pattern
+- Concurrency Pattern 
+
+Creational Pattern
 - Factory Pattern
 - Builder Pattern
 - Dependency Injection 
@@ -48,7 +57,9 @@ Structural Pattern
 - Adapter
 - Decorator
 - Facade
-- Front Controller Behavioral Pattern 
+- Front Controller 
+
+Behavioral Pattern 
 - Command
 - Observer
 - Strategy
@@ -95,4 +106,3 @@ Automated Testing Java (PTJ)
 - Functional Test
 - Performance Test 
 - Stress Test
-
