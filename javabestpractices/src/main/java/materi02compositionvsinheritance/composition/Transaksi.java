@@ -42,4 +42,18 @@ public class Transaksi {
 
     return hitungTotalNilai().subtract(totalDiskon);
   }
+
+  public BigDecimal hitungTotalNilai2() {
+    return daftarPembelian.stream()
+        .map(Product::getPrice)
+        .reduce(BigDecimal::add)
+        .orElse(BigDecimal.ZERO);
+  }
+
+  public BigDecimal hitungTotalPembayaran2() {
+    return daftarDiskon.stream()
+        .map(diskon -> diskon.hitungDiskon(this))
+        .reduce(BigDecimal::add)
+        .orElse(BigDecimal.ZERO);
+  }
 }

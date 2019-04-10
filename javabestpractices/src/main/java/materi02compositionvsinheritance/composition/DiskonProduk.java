@@ -1,10 +1,11 @@
 package materi02compositionvsinheritance.composition;
 
-import materi01equalshashcode.Product;
-
 import java.math.BigDecimal;
 
 public class DiskonProduk implements Diskon {
+
+  private static final double DEFAULT_DISKON = 0.1;
+
   @Override
   public String getNama() {
     return "Diskon Produk";
@@ -12,12 +13,10 @@ public class DiskonProduk implements Diskon {
 
   @Override
   public BigDecimal hitungDiskon(Transaksi t) {
-    BigDecimal totalDiskon = BigDecimal.ZERO;
-    for (Product p : t.getDaftarPembelian()) {
-      if ("P001".equalsIgnoreCase(p.getCode())) {
-        totalDiskon.add(p.getPrice().multiply(new BigDecimal("0.1")));
-      }
-    }
-    return totalDiskon;
+    return t.getDaftarPembelian().stream()
+        .filter(product -> "P001".equalsIgnoreCase(product.getCode()))
+        .map(product -> product.getPrice().multiply(BigDecimal.valueOf(DEFAULT_DISKON)))
+        .reduce(BigDecimal::add)
+        .orElse(BigDecimal.ZERO);
   }
 }

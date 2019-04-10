@@ -3,17 +3,24 @@ package materi02compositionvsinheritance.composition;
 import materi01equalshashcode.Product;
 
 import java.math.BigDecimal;
+import java.util.function.Function;
 
 public class DemoComposition {
   public static void main(String... args) {
-    Transaksi t = new Transaksi();
-    Product p = new Product();
-    p.setCode("P001");
 
-    t.getDaftarPembelian().add(p);
-    t.getDaftarDiskon().add(new DiskonProduk());
-    t.getDaftarDiskon().add(new DiskonTotal());
+    Function<Transaksi, BigDecimal> hitungTotalPembayaran =
+        transaksi -> {
+          Product product = new Product();
+          product.setCode("P001");
+          product.setPrice(BigDecimal.TEN);
 
-    BigDecimal diskon = t.hitungTotalPembayaran();
+          transaksi.getDaftarPembelian().add(product);
+          transaksi.getDaftarDiskon().add(new DiskonProduk());
+          transaksi.getDaftarDiskon().add(new DiskonTotal());
+
+          return transaksi.hitungTotalPembayaran2();
+        };
+
+    System.out.println(hitungTotalPembayaran.apply(new Transaksi()));
   }
 }
